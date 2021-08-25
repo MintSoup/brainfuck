@@ -1,0 +1,15 @@
+{
+	"configurations": {
+		"Launch": {
+			"adapter": "vscode-cpptools",
+			"configuration": {
+				"name": "(gdb) Launch",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/bf",
+				"stopAtEntry": true,
+				"args": ["mandel.b"]
+			}
+		}
+	}
+}
