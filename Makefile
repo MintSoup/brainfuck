@@ -1,5 +1,5 @@
 CC := gcc
-name := bf 
+name := bf
 
 src := src
 inc := inc
@@ -10,15 +10,21 @@ objf := $(srcf:$(src)/%.c=$(obj)/%.o)
 
 executable := $(name)
 
-flags := -O3 -Wall 
+flags := -O3 -Wall
 
-debugflags := -g -Og -Wall -DDebug 
+debugflags := -g -Og -Wall -DDebug
+
+all: compiler build
 
 $(obj)/%.o: $(src)/%.c $(obj)
 	$(CC) $(flags) -I$(inc) -c -o $@ $<
 
 $(executable): $(objf)
 	$(CC) $(objf) -o $(executable)
+
+
+compiler:
+	gcc -O3 -Wall -g ./compiler.c -o ./bfc
 
 build: $(executable)
 
@@ -28,9 +34,8 @@ debug: $(executable)
 run: $(executable)
 	st sh -c './$(executable) mandel.b; pause'
 
-$(obj):  
+$(obj):
 	mkdir -p $(obj)
 
 clean:
 	rm -rf $(objf) $(executable)
-
